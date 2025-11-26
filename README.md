@@ -48,11 +48,65 @@ Model Waveform
 <img width="703" height="679" alt="image" src="https://github.com/user-attachments/assets/e7c7c7f8-ccf2-41ac-b1f3-325989941a6f" />
 
 Program
+clc;
+clear;
+close;
+
+Am = 8.2;
+Ac = 16.4;
+fm = 390;
+fc = 3900;
+fs = 39000;
+t = 0:1/fs:0.01;
+
+// Message and Carrier
+modulating = Am * sin(2 * %pi * fm * t);
+carrier = Ac * sin(2 * %pi * fc * t);
+
+// DSB-SC Modulation (product modulation)
+dsb_sc = modulating .* carrier;
+
+// Coherent Demodulation
+demod_raw = dsb_sc .* carrier;
+
+// Low-pass filter using moving average
+N = round(fs / (5 * fm));
+lp = ones(1, N) / N;
+demodulated = conv(demod_raw, lp, 'same');
+demodulated = demodulated - mean(demodulated);
+
+// Plot all signals
+subplot(4,1,1)
+plot(t, modulating)
+title('Modulating Signal')
+xlabel('Time (s)')
+ylabel('Amplitude')
+
+subplot(4,1,2)
+plot(t, carrier)
+title('Carrier Signal')
+xlabel('Time (s)')
+ylabel('Amplitude')
+
+subplot(4,1,3)
+plot(t, dsb_sc)
+title('DSB-SC Modulated Signal')
+xlabel('Time (s)')
+ylabel('Amplitude')
+
+subplot(4,1,4)
+plot(t, demodulated)
+title('Demodulated Signal (Recovered Message)')
+xlabel('Time (s)')
+ylabel('Amplitude')
 
 Output Graph
+<img width="610" height="460" alt="image" src="https://github.com/user-attachments/assets/6f47cf60-b899-4beb-8c11-11600c48e1f6" />
 
 
 Tablular Column
+![WhatsApp Image 2025-11-27 at 12 37 45 AM](https://github.com/user-attachments/assets/04957939-0f77-4150-bb0c-6940c3722062)
+
 
 
 Result
