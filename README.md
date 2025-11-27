@@ -105,7 +105,8 @@ Output Graph
 
 
 Tablular Column
-![WhatsApp Image 2025-11-27 at 12 37 45 AM](https://github.com/user-attachments/assets/04957939-0f77-4150-bb0c-6940c3722062)
+<img width="960" height="1280" alt="image" src="https://github.com/user-attachments/assets/dacf771d-372c-433f-81d2-056203806857" />
+<img width="960" height="1280" alt="image" src="https://github.com/user-attachments/assets/8c1790ac-20de-493f-97d5-a4d3e9b8fdc7" />
 
 
 
